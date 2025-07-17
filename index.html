@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenTTD - Local Build</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .game-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        iframe {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            height: 600px;
+            max-width: 1024px;
+        }
+        .info {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚂 OpenTTD - Local Web Build</h1>
+        
+        <div class="success">
+            <strong>✅ Build Fixed!</strong> The subarray error has been resolved. The game should now run without errors.
+        </div>
+        
+        <div class="info">
+            <h3>Welcome to OpenTTD!</h3>
+            <p>This is a locally built version of OpenTTD compiled to WebAssembly. You can play the full transport simulation game directly in your browser.</p>
+        </div>
+
+        <div class="game-container">
+            <iframe src="openttd.html" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="controls">
+            <button onclick="reloadGame()">🔄 Reload Game</button>
+            <button onclick="openInNewTab()">🖥️ Open in New Tab</button>
+            <button onclick="showHelp()">❓ Help</button>
+        </div>
+
+        <div class="info">
+            <h3>Game Controls:</h3>
+            <ul>
+                <li><strong>Mouse:</strong> Click and drag to pan the map</li>
+                <li><strong>Scroll:</strong> Zoom in/out</li>
+                <li><strong>Right-click:</strong> Context menu</li>
+                <li><strong>Space:</strong> Pause/unpause</li>
+                <li><strong>ESC:</strong> Close dialogs</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>Getting Started:</h3>
+            <ol>
+                <li>Click "Generate World" to create a new game</li>
+                <li>Start by building roads or railways</li>
+                <li>Connect cities and industries</li>
+                <li>Buy vehicles to transport passengers and cargo</li>
+                <li>Expand your transportation network and make profits!</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function reloadGame() {
+            document.querySelector('iframe').contentWindow.location.reload();
+        }
+
+        function openInNewTab() {
+            window.open('openttd.html', '_blank');
+        }
+
+        function showHelp() {
+            alert('OpenTTD Help:\n\n' +
+                  '• This is a full-featured transport simulation game\n' +
+                  '• Build railways, roads, airports, and ship routes\n' +
+                  '• Connect cities and industries to make money\n' +
+                  '• Compete against AI players\n' +
+                  '• The game autosaves periodically\n\n' +
+                  'For more help, check the in-game help system or visit openttd.org');
+        }
+
+        // Auto-resize iframe on window resize
+        window.addEventListener('resize', function() {
+            const iframe = document.querySelector('iframe');
+            if (iframe) {
+                iframe.style.height = Math.min(window.innerHeight - 300, 600) + 'px';
+            }
+        });
+    </script>
+</body>
+</html>

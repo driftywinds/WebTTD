@@ -1,0 +1,27 @@
+# WebTTD - Web version of OpenTTD
+# This repository contains the built WebAssembly version
+
+# Node modules if using npm scripts
+node_modules/
+
+# Local development
+.DS_Store
+.vscode/
+*.log
+
+# Server logs
+server.log
+*.pid
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.backup
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
