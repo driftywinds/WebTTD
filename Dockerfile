@@ -3,8 +3,17 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
-# Copy all repository contents
-COPY . /app/
+# Copy game files
+COPY openttd.html openttd.js openttd.wasm openttd.data index.html nginx.conf ./
+
+# Copy required directories
+COPY ai/ ./ai/
+COPY baseset/ ./baseset/
+COPY game/ ./game/
+COPY lang/ ./lang/
+
+# Create directories for mounted volumes
+RUN mkdir -p saves custom
 
 # Expose port 8000
 EXPOSE 8000
